@@ -1,0 +1,111 @@
+<app-nav></app-nav>
+<div class="thongTinDatHang">
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="section-title">ĐẶT HÀNG</h3>
+      <div class="section-title-divider"></div>
+    </div>
+  </div>
+  <form class="form-horizontal myForm" #khachHangForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="thongTinKhachHang">
+      <h3>THÔNG TIN KHÁCH HÀNG</h3>
+      <div class="form-group">
+        <label class="control-label col-sm-4 col-sm-offset-1">Tên khách hàng</label>
+        <div class="col-sm-4">
+          <input type="text" id="ten" name="ten" required class="form-control" placeholder="Họ và tên" #ten="ngModel" [(ngModel)]="khachHang.ten">
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-5">
+            <div class="alert alert-danger" [hidden]="ten.valid || ten.pristine">Nhập giá trị</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4 col-sm-offset-1">Ngày sinh</label>
+        <div class="col-sm-4">
+          <input type="date" id="ngaysinh" name="ngaysinh" required class="form-control" placeholder="Ngày sinh" #ngaysinh="ngModel" [(ngModel)]="khachHang.ngaySinh">
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-5">
+            <div class="alert alert-danger" [hidden]="ngaysinh.valid || ngaysinh.pristine">Nhập giá trị</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4 col-sm-offset-1">Địa chỉ email</label>
+        <div class="col-sm-4">
+          <input type="email" id="email" name="email" required class="form-control" placeholder="Email" #email="ngModel" [(ngModel)]="khachHang.email">
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-5">
+            <div class="alert alert-danger" [hidden]="email.valid || email.pristine">Nhập giá trị</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4 col-sm-offset-1">Điện thoại</label>
+        <div class="col-sm-4">
+          <input type="text" id="phone" name="phone" required class="form-control" placeholder="Điện thoại" #phone="ngModel" [(ngModel)]="khachHang.dienThoai">
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-5">
+            <div class="alert alert-danger" [hidden]="phone.valid || phone.pristine">Nhập giá trị</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="thongTinGiaoHang">
+      <h3>THÔNG TIN GIAO HÀNG</h3>
+      <div class="form-group">
+        <label class="control-label col-sm-4 col-sm-offset-1">Địa chỉ giao hàng</label>
+        <div class="col-sm-4">
+          <input type="text" id="diachi" name="diachi" required class="form-control" placeholder="Địa chỉ giao hàng" #diachi="ngModel" [(ngModel)]="giaoHang.diachi">
+        </div>
+        <div class="row">
+          <div class="col-sm-4 col-sm-offset-5">
+            <div class="alert alert-danger" [hidden]="diachi.valid || diachi.pristine">Nhập giá trị</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-4 col-sm-offset-1">Phương thức thanh toán</label>
+        <div class="col-sm-4" id="phuongthuc">
+          <label *ngFor="let item of phuongThucThanhToan">
+            <input type="radio" name="phuongthuc" required [value]="item" #phuongthuc="ngModel" [(ngModel)]="giaoHang.phuongThucThanhToan"> {{item}}
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-8 col-sm-offset-3 xacNhanThongTin">
+          <button type="submit" class="btn btn-primary" [disabled]="!khachHangForm.form.valid">Xác nhận thông tin đặt hàng</button>
+          <button type="button" id="reset" class="btn btn-danger" (click)="newNguoiDung(); khachHangForm.reset()">Sửa lại tất cả</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div [hidden]="!submitted" class="xacNhanThongTin">
+  <h2>XÁC NHẬN THÔNG TIN ĐẶT HÀNG</h2>
+  <div class="row">
+    <div class="col-xs-3 col-sm-6 col-sm-offset-4">Họ tên : {{khachHang.ten}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-6 col-sm-offset-4">Email : {{khachHang.email}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-6 col-sm-offset-4">Ngày sinh : {{khachHang.ngaySinh}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-6 col-sm-offset-4">Điện thoại liên lạc : {{khachHang.dienThoai}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-6 col-sm-offset-4">Địa chỉ giao hàng : {{giaoHang.diachi}}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-sm-6 col-sm-offset-4">Phương thức thanh toán : {{giaoHang.phuongThucThanhToan}}</div>
+  </div>
+  <div class="text-center" style="margin-top: 10px">
+    <button type="submit" class="btn btn-success btn-lg text-center">Tiến hành đặt hàng</button>
+  </div>
+</div>
+<app-footer></app-footer>

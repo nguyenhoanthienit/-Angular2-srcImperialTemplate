@@ -1,0 +1,17 @@
+.thongTinDatHang , .xacNhanThongTin{
+	overflow-x: hidden;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.thongTinDatHang .myForm .thongTinKhachHang{
+	margin-bottom: 70px;
+}
+
+.thongTinKhachHang h3, .thongTinGiaoHang h3, .thongTinGiaoHang .xacNhanThongTin{
+	text-align: center;
+}
+
+.xacNhanThongTin h2{
+	text-align: center;
+}

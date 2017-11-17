@@ -1,0 +1,49 @@
+<app-nav></app-nav>
+<section id="portfolio">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Giỏ hàng</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description">Thông tin các sản phẩm quý khách đã mua</p>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-hover table-responsive">
+                <thead>
+                    <tr>
+                        <th>Mã Sản Phẩm</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Đơn Giá</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sp of gioHangS">
+                        <td>{{sp.masanpham}}</td>
+                        <td>{{sp.tensanpham}}</td>
+                        <td>
+                            <input type="text" value="{{sp.soluong}}" name="sl{{sp.masanpham}}" id="sl{{sp.masanpham}}" style="width: 70px" (keyup)="capNhatGioHang($event)" (blur)="kiemTraGioHang($event)">
+                        </td>
+                        <td>{{sp.dongia | number : '1.0-2'}}</td>
+                        <td>{{sp.dongia * sp.soluong | number : '1.0-2'}}</td>
+                        <td>
+                            <button class="btn btn-danger btn-xs"> 
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" style="text-align: right" *ngIf="gioHangS.length > 0" >
+                            <button class="btn btn-primary" (click)="datHang()"><span class="glyphicon glyphicon-shopping-cart"></span>Đặt hàng</button>
+                            <button class="btn btn-danger" (click)="huyHang()"><span class="glyphicon glyphicon-remove"></span>Huỷ đơn đặt hàng</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

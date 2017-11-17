@@ -1,0 +1,12 @@
+.selectedSanPham{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.selectedSanPham .datHang .row{
+    margin-bottom: 10px;
+}
+
+.selectedSanPham .chiTiet{
+	margin-top: 50px;
+}

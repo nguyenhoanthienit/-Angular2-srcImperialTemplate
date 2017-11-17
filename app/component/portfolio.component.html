@@ -1,0 +1,25 @@
+<!--==========================
+  Porfolio Section
+============================-->
+<section id="portfolio">
+    <div class="container wow fadeInUp">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">Portfolio</h3>
+                <div class="section-title-divider"></div>
+                <p class="section-description">Si stante, hoc natura videlicet vult, salvam esse se, quod concedimus ses haec dicturum fuisse</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-3" *ngFor="let sp of sanPhamGos">
+                <a class="portfolio-item" [ngStyle]="{'background-image' : 'url(assets/img/hinhSanPhamGo/' + sp.hinh + ')'}" routerLink="/sanpham/{{sp.tensanphamurl}}-{{sp.masanpham}}" routerLinkActive="active">
+                    <div class="details">
+                        <h4>{{sp.tensanpham}}</h4>
+                        <span>{{sp.dongia}}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
